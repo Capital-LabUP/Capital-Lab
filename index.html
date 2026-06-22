@@ -724,8 +724,6 @@ canvas.candle-canvas{display:block;width:100%;height:340px;}
       <button class="wf-btn"        data-wf="accion"   onclick="setWlFilter('accion',this)">Acc.</button>
       <button class="wf-btn"        data-wf="bono"     onclick="setWlFilter('bono',this)">Bonos</button>
       <button class="wf-btn"        data-wf="divisa"   onclick="setWlFilter('divisa',this)">FX</button>
-      <button class="wf-btn"        data-wf="futuro"   onclick="setWlFilter('futuro',this)">Fut.</button>
-      <button class="wf-btn"        data-wf="derivado" onclick="setWlFilter('derivado',this)">Der.</button>
     </div>
     <div class="wl-sort">
       <button class="wl-sort-btn active" data-sort="default" onclick="setWlSort('default')" title="Por tipo"><i class="ti ti-layout-list"></i></button>
@@ -859,8 +857,6 @@ canvas.candle-canvas{display:block;width:100%;height:340px;}
     <button class="an-class-btn active" data-cls="accion" onclick="setAnalysisClass('accion',this)"><i class="ti ti-trending-up"></i> Acciones</button>
     <button class="an-class-btn" data-cls="bono" onclick="setAnalysisClass('bono',this)"><i class="ti ti-building-bank"></i> Bonos</button>
     <button class="an-class-btn" data-cls="divisa" onclick="setAnalysisClass('divisa',this)"><i class="ti ti-currency-dollar"></i> Divisas</button>
-    <button class="an-class-btn" data-cls="futuro" onclick="setAnalysisClass('futuro',this)"><i class="ti ti-chart-candle"></i> Futuros</button>
-    <button class="an-class-btn" data-cls="derivado" onclick="setAnalysisClass('derivado',this)"><i class="ti ti-diamonds"></i> Derivados</button>
   </div>
   <input class="wl-search" id="an-asset-search" placeholder="Buscar en esta clase..." oninput="renderAnalysisGrid()" style="max-width:380px;margin-bottom:12px;">
   <div class="an-asset-grid" id="an-asset-grid"></div>
@@ -1061,12 +1057,6 @@ canvas.candle-canvas{display:block;width:100%;height:340px;}
         <div class="lab-section-title"><i class="ti ti-currency-dollar" style="font-size:12px;"></i> Divisas</div>
         <div class="lap-grid" id="lap-divisas"></div>
 
-        <div class="lab-section-title"><i class="ti ti-chart-candle" style="font-size:12px;"></i> Futuros</div>
-        <div class="lap-grid" id="lap-futuros"></div>
-
-        <div class="lab-section-title"><i class="ti ti-layers-difference" style="font-size:12px;"></i> Derivados</div>
-        <div class="lap-grid" id="lap-derivados"></div>
-
         <div class="lab-section-title">Portafolio seleccionado</div>
         <div class="lab-picked-list" id="lab-picked-list"><span style="font-size:12px;color:var(--t3);">Ningún activo seleccionado aún</span></div>
       </div>
@@ -1082,11 +1072,9 @@ canvas.candle-canvas{display:block;width:100%;height:340px;}
           </select>
         </div>
         <div id="lab-suggestion" class="info-box success" style="margin-bottom:12px;"></div>
-        <div class="field"><label>% Bonos</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="30" id="lab-pct-b" oninput="labAlloc()"><span class="val" id="lab-pct-b-v">30%</span></div></div>
-        <div class="field"><label>% Acciones</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="35" id="lab-pct-a" oninput="labAlloc()"><span class="val" id="lab-pct-a-v">35%</span></div></div>
-        <div class="field"><label>% Divisas</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="15" id="lab-pct-d" oninput="labAlloc()"><span class="val" id="lab-pct-d-v">15%</span></div></div>
-        <div class="field"><label>% Futuros</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="10" id="lab-pct-f" oninput="labAlloc()"><span class="val" id="lab-pct-f-v">10%</span></div></div>
-        <div class="field"><label>% Derivados</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="10" id="lab-pct-dv" oninput="labAlloc()"><span class="val" id="lab-pct-dv-v">10%</span></div></div>
+        <div class="field"><label>% Bonos</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="35" id="lab-pct-b" oninput="labAlloc()"><span class="val" id="lab-pct-b-v">35%</span></div></div>
+        <div class="field"><label>% Acciones</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="45" id="lab-pct-a" oninput="labAlloc()"><span class="val" id="lab-pct-a-v">45%</span></div></div>
+        <div class="field"><label>% Divisas</label><div class="field-row"><input type="range" min="0" max="100" step="5" value="20" id="lab-pct-d" oninput="labAlloc()"><span class="val" id="lab-pct-d-v">20%</span></div></div>
         <div id="lab-alloc-warn" style="font-size:11px;color:var(--red);display:none;margin-bottom:8px;"><i class="ti ti-alert-triangle"></i> La suma debe ser 100%</div>
         <button class="btn btn-primary" style="width:100%;" onclick="simulateLab()"><i class="ti ti-rocket"></i> Simular resultado del horizonte</button>
       </div>
@@ -1190,8 +1178,6 @@ canvas.candle-canvas{display:block;width:100%;height:340px;}
     <button class="news-class-btn" data-cat="accion" onclick="setNewsCategory('accion',this)"><i class="ti ti-trending-up"></i> Acciones</button>
     <button class="news-class-btn" data-cat="bono" onclick="setNewsCategory('bono',this)"><i class="ti ti-building-bank"></i> Bonos</button>
     <button class="news-class-btn" data-cat="divisa" onclick="setNewsCategory('divisa',this)"><i class="ti ti-currency-dollar"></i> Divisas</button>
-    <button class="news-class-btn" data-cat="futuro" onclick="setNewsCategory('futuro',this)"><i class="ti ti-chart-candle"></i> Futuros</button>
-    <button class="news-class-btn" data-cat="derivado" onclick="setNewsCategory('derivado',this)"><i class="ti ti-diamonds"></i> Derivados</button>
     <button class="news-class-btn" data-cat="general" onclick="setNewsCategory('general',this)"><i class="ti ti-broadcast"></i> Generales</button>
   </div>
   <div id="news-center" class="news-center"></div>
@@ -1924,108 +1910,10 @@ const ALL_FOREX=[
 ];
 
 // ── FUTUROS ──
-const ALL_FUTURES=[
-  {id:'CL1',name:'Petróleo Crudo WTI',ticker:'CL1!',sector:'Energía',country:'Global',price:78.4,beta:1.45,sigma:32.8,ret:8.2,rating:'N/A',dividend:0,type:'futuro',spot:77.224,basis:1.176,openInterest:229,curveState:'Contango',expiry:'Trimestral',
-   profile:'Contrato de futuros del crudo West Texas Intermediate (WTI), referencia de petróleo en América. Cotiza en el NYMEX (CME Group). El precio refleja oferta/demanda global, decisiones de la OPEP+ y tensiones geopolíticas en Medio Oriente. Contrato estándar: 1,000 barriles.',
-   specs:{exchange:'NYMEX/CME',contractSize:'1,000 barriles',tickSize:'$0.01/barril',margin:'$5,000–$7,000 aprox.',settlement:'Entrega física',expiryNote:'Mes próximo al vencimiento'}
-  },
-  {id:'GC1',name:'Oro',ticker:'GC1!',sector:'Metales preciosos',country:'Global',price:2345.0,beta:0.18,sigma:14.2,ret:6.1,rating:'N/A',dividend:0,type:'futuro',spot:2373.14,basis:-28.14,openInterest:498,curveState:'Backwardation',expiry:'Trimestral',
-   profile:'Contrato de futuros del oro en el COMEX (CME Group). El oro actúa como reserva de valor y activo refugio. Su precio sube en contextos de incertidumbre geopolítica, inflación elevada y debilidad del dólar. Los bancos centrales son los mayores compradores institucionales.',
-   specs:{exchange:'COMEX/CME',contractSize:'100 onzas troy',tickSize:'$0.10/onza',margin:'$9,000–$12,000 aprox.',settlement:'Entrega física o cash',expiryNote:'Feb, Apr, Jun, Aug, Oct, Dec'}
-  },
-  {id:'ES1',name:'S&P 500 E-mini',ticker:'ES1!',sector:'Índices',country:'EE.UU.',price:5248.0,beta:1.0,sigma:18.6,ret:10.2,rating:'N/A',dividend:0,type:'futuro',spot:5169.28,basis:78.72,openInterest:917,curveState:'Contango',expiry:'Trimestral',
-   profile:'Futuro sobre el índice S&P 500, que representa las 500 mayores empresas cotizadas en EE.UU. Es el contrato de futuros de índices más negociado del mundo. Se utiliza para cobertura de carteras de renta variable y como indicador del sentimiento del mercado bursátil americano.',
-   specs:{exchange:'CME Group',contractSize:'$50 × S&P 500',tickSize:'0.25 puntos ($12.50)',margin:'$12,000–$15,000 aprox.',settlement:'Cash (liquidación en efectivo)',expiryNote:'Mar, Jun, Sep, Dic'}
-  },
-  {id:'ZW1',name:'Trigo CBOT',ticker:'ZW1!',sector:'Agrícola',country:'Global',price:584.5,beta:0.52,sigma:28.4,ret:4.8,rating:'N/A',dividend:0,type:'futuro',spot:591.514,basis:-7.014,openInterest:478,curveState:'Backwardation',expiry:'Trimestral',
-   profile:'Futuro sobre trigo blando de invierno en el CBOT (CME Group). Referencia para el mercado global de granos. El precio es altamente sensible a condiciones climáticas, producción de EE.UU., Ucrania y Rusia, y a la demanda de países importadores como Egipto y China.',
-   specs:{exchange:'CBOT/CME',contractSize:'5,000 bushels',tickSize:'1/4 centavo/bushel ($12.50)',margin:'$1,500–$2,500 aprox.',settlement:'Entrega física',expiryNote:'Mar, May, Jul, Sep, Dic'}
-  },
-  {id:'6E1',name:'Euro FX Futuro',ticker:'6E1!',sector:'Divisas',country:'Eurozona',price:1.082,beta:0.38,sigma:8.4,ret:3.7,rating:'N/A',dividend:0,type:'futuro',spot:1.0658,basis:0.0162,openInterest:547,curveState:'Contango',expiry:'Trimestral',
-   profile:'Contrato de futuros sobre el tipo de cambio EUR/USD en el CME. Se utiliza para cobertura cambiaria por importadores, exportadores y gestores de fondos con exposición al euro. Es el contrato de futuros de divisas más negociado del mundo.',
-   specs:{exchange:'CME Group',contractSize:'125,000 euros',tickSize:'$0.00005/EUR ($6.25)',margin:'$2,000–$3,500 aprox.',settlement:'Entrega física de euros',expiryNote:'Mar, Jun, Sep, Dic'}
-  },
-  {id:'BTC1',name:'Bitcoin CME',ticker:'BTC1!',sector:'Criptoactivos',country:'Global',price:67500,beta:2.85,sigma:72.4,ret:42.0,rating:'N/A',dividend:0,type:'futuro',spot:68310.0,basis:-810.0,openInterest:791,curveState:'Backwardation',expiry:'Trimestral',
-   profile:'Contrato de futuros sobre Bitcoin regulado en el CME Group. Permite exposición al precio del BTC sin custodia directa. Alta volatilidad y liquidez creciente. Utilizado por institucionales para cobertura y especulación. Aprobación de ETFs spot en 2024 impulsó adopción institucional.',
-   specs:{exchange:'CME Group',contractSize:'5 BTC',tickSize:'$5/BTC ($25/contrato)',margin:'$50,000–$80,000 aprox.',settlement:'Cash (precio de referencia CF Benchmarks)',expiryNote:'Mensual y trimestral'}
-  },
-  {id:'NG1',name:'Futuro Gas Natural',ticker:'NG1!',sector:'Energía',price:2.84,sigma:42.8,ret:7.2,type:'futuro',spot:2.8741,basis:-0.0341,openInterest:670,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Gas Natural (NG1!). Contrato de futuros del sector energía. Volatilidad anualizada de 42.8%, retorno esperado 7.2%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'HG1',name:'Futuro Cobre',ticker:'HG1!',sector:'Materiales',price:4.28,sigma:26.4,ret:8.1,type:'futuro',spot:4.2158,basis:0.0642,openInterest:151,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Cobre (HG1!). Contrato de futuros del sector materiales. Volatilidad anualizada de 26.4%, retorno esperado 8.1%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'SI1',name:'Futuro Plata',ticker:'SI1!',sector:'Materiales',price:29.4,sigma:31.2,ret:7.8,type:'futuro',spot:28.959,basis:0.441,openInterest:800,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Plata (SI1!). Contrato de futuros del sector materiales. Volatilidad anualizada de 31.2%, retorno esperado 7.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'PL1',name:'Futuro Platino',ticker:'PL1!',sector:'Materiales',price:968.0,sigma:28.6,ret:6.4,type:'futuro',spot:953.48,basis:14.52,openInterest:642,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Platino (PL1!). Contrato de futuros del sector materiales. Volatilidad anualizada de 28.6%, retorno esperado 6.4%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'ZC1',name:'Futuro Maíz',ticker:'ZC1!',sector:'Agrícola',price:442.5,sigma:24.1,ret:5.2,type:'futuro',spot:447.81,basis:-5.31,openInterest:593,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Maíz (ZC1!). Contrato de futuros del sector agrícola. Volatilidad anualizada de 24.1%, retorno esperado 5.2%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'ZS1',name:'Futuro Soja',ticker:'ZS1!',sector:'Agrícola',price:1184.0,sigma:22.8,ret:5.8,type:'futuro',spot:1198.208,basis:-14.208,openInterest:574,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Soja (ZS1!). Contrato de futuros del sector agrícola. Volatilidad anualizada de 22.8%, retorno esperado 5.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'KC1',name:'Futuro Café',ticker:'KC1!',sector:'Agrícola',price:238.5,sigma:34.2,ret:6.9,type:'futuro',spot:234.9225,basis:3.5775,openInterest:311,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Café (KC1!). Contrato de futuros del sector agrícola. Volatilidad anualizada de 34.2%, retorno esperado 6.9%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'SB1',name:'Futuro Azúcar',ticker:'SB1!',sector:'Agrícola',price:19.8,sigma:29.4,ret:5.4,type:'futuro',spot:19.503,basis:0.297,openInterest:729,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Azúcar (SB1!). Contrato de futuros del sector agrícola. Volatilidad anualizada de 29.4%, retorno esperado 5.4%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'CT1',name:'Futuro Algodón',ticker:'CT1!',sector:'Agrícola',price:78.2,sigma:27.1,ret:4.8,type:'futuro',spot:79.1384,basis:-0.9384,openInterest:269,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Algodón (CT1!). Contrato de futuros del sector agrícola. Volatilidad anualizada de 27.1%, retorno esperado 4.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'CC1',name:'Futuro Cacao',ticker:'CC1!',sector:'Agrícola',price:7842.0,sigma:38.6,ret:7.1,type:'futuro',spot:7724.37,basis:117.63,openInterest:618,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Cacao (CC1!). Contrato de futuros del sector agrícola. Volatilidad anualizada de 38.6%, retorno esperado 7.1%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'NQ1',name:'Futuro Nasdaq 100',ticker:'NQ1!',sector:'Índices',price:18420.0,sigma:21.4,ret:11.2,type:'futuro',spot:18641.04,basis:-221.04,openInterest:684,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Nasdaq 100 (NQ1!). Contrato de futuros del sector índices. Volatilidad anualizada de 21.4%, retorno esperado 11.2%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'YM1',name:'Futuro Dow Jones',ticker:'YM1!',sector:'Índices',price:39250.0,sigma:16.8,ret:8.4,type:'futuro',spot:38661.25,basis:588.75,openInterest:439,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Dow Jones (YM1!). Contrato de futuros del sector índices. Volatilidad anualizada de 16.8%, retorno esperado 8.4%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'RTY1',name:'Futuro Russell 2000',ticker:'RTY1!',sector:'Índices',price:2042.0,sigma:23.8,ret:9.1,type:'futuro',spot:2066.504,basis:-24.504,openInterest:298,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Russell 2000 (RTY1!). Contrato de futuros del sector índices. Volatilidad anualizada de 23.8%, retorno esperado 9.1%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'DAX1',name:'Futuro DAX 40',ticker:'DAX1!',sector:'Índices',price:18180.0,sigma:18.4,ret:9.8,type:'futuro',spot:17907.3,basis:272.7,openInterest:137,curveState:'Contango',expiry:'Trimestral',profile:'Futuro DAX 40 (DAX1!). Contrato de futuros del sector índices. Volatilidad anualizada de 18.4%, retorno esperado 9.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'FTSE1',name:'Futuro FTSE 100',ticker:'FTSE1!',sector:'Índices',price:8124.0,sigma:15.2,ret:7.6,type:'futuro',spot:8221.488,basis:-97.488,openInterest:984,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro FTSE 100 (FTSE1!). Contrato de futuros del sector índices. Volatilidad anualizada de 15.2%, retorno esperado 7.6%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'N225',name:'Futuro Nikkei 225',ticker:'N225!',sector:'Índices',price:38420.0,sigma:19.8,ret:9.4,type:'futuro',spot:37843.7,basis:576.3,openInterest:528,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Nikkei 225 (N225!). Contrato de futuros del sector índices. Volatilidad anualizada de 19.8%, retorno esperado 9.4%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'ETH1',name:'Futuro Ethereum',ticker:'ETH1!',sector:'Cripto',price:3284.0,sigma:58.4,ret:14.2,type:'futuro',spot:3323.408,basis:-39.408,openInterest:969,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Ethereum (ETH1!). Contrato de futuros del sector cripto. Volatilidad anualizada de 58.4%, retorno esperado 14.2%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'ZB1',name:'Futuro Bono T 30Y',ticker:'ZB1!',sector:'Renta Fija',price:118.4,sigma:9.8,ret:3.2,type:'futuro',spot:116.624,basis:1.776,openInterest:937,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Bono T 30Y (ZB1!). Contrato de futuros del sector renta fija. Volatilidad anualizada de 9.8%, retorno esperado 3.2%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'ZN1',name:'Futuro Nota T 10Y',ticker:'ZN1!',sector:'Renta Fija',price:110.2,sigma:6.4,ret:2.8,type:'futuro',spot:111.5224,basis:-1.3224,openInterest:368,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Nota T 10Y (ZN1!). Contrato de futuros del sector renta fija. Volatilidad anualizada de 6.4%, retorno esperado 2.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'6J1',name:'Futuro Yen Japonés',ticker:'6J1!',sector:'Divisas',price:0.00642,sigma:9.2,ret:1.8,type:'futuro',spot:0.0063,basis:0.0001,openInterest:431,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Yen Japonés (6J1!). Contrato de futuros del sector divisas. Volatilidad anualizada de 9.2%, retorno esperado 1.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'6B1',name:'Futuro Libra Esterlina',ticker:'6B1!',sector:'Divisas',price:1.272,sigma:8.8,ret:2.1,type:'futuro',spot:1.2873,basis:-0.0153,openInterest:278,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Libra Esterlina (6B1!). Contrato de futuros del sector divisas. Volatilidad anualizada de 8.8%, retorno esperado 2.1%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'6C1',name:'Futuro Dólar Canadiense',ticker:'6C1!',sector:'Divisas',price:0.732,sigma:8.4,ret:1.9,type:'futuro',spot:0.7408,basis:-0.0088,openInterest:281,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Dólar Canadiense (6C1!). Contrato de futuros del sector divisas. Volatilidad anualizada de 8.4%, retorno esperado 1.9%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'RB1',name:'Futuro Gasolina',ticker:'RB1!',sector:'Energía',price:2.42,sigma:34.8,ret:6.8,type:'futuro',spot:2.3837,basis:0.0363,openInterest:422,curveState:'Contango',expiry:'Trimestral',profile:'Futuro Gasolina (RB1!). Contrato de futuros del sector energía. Volatilidad anualizada de 34.8%, retorno esperado 6.8%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}},
-  {id:'HO1',name:'Futuro Diésel',ticker:'HO1!',sector:'Energía',price:2.68,sigma:32.4,ret:6.4,type:'futuro',spot:2.7122,basis:-0.0322,openInterest:797,curveState:'Backwardation',expiry:'Trimestral',profile:'Futuro Diésel (HO1!). Contrato de futuros del sector energía. Volatilidad anualizada de 32.4%, retorno esperado 6.4%.',specs:{exchange:'CME/ICE',contractSize:'Estándar',tickSize:'0.01',margin:'8-12%',settlement:'Mensual'}}
-];
+const ALL_FUTURES=[];  // Reservado para versión futura (no incluido en la edición de 3 mercados)
 
 // ── DERIVADOS ──
-const ALL_DERIVATIVES=[
-  {id:'AAPL-CALL',name:'AAPL Call Option',ticker:'AAPL 200C',sector:'Opciones / Acciones',country:'EE.UU.',price:8.45,beta:1.9,sigma:38.2,ret:18.5,rating:'N/A',dividend:0,type:'derivado',delta:0.48,gamma:0.04,theta:-0.12,vega:0.18,impliedVol:28.4,strike:200,intrinsic:5.07,
-   profile:'Opción de compra (Call) sobre acciones de Apple Inc. con precio de ejercicio (strike) de $200. Otorga el derecho, no la obligación, de comprar 100 acciones de AAPL a $200 hasta la fecha de vencimiento. Prima actual: $8.45/acción.',
-   specs:{underlying:'Apple Inc. (AAPL)',type:'Call (opción de compra)',strike:'$200.00',expiry:'Próximo vencimiento mensual',premium:'$8.45 / acción',contractSize:'100 acciones',delta:'0.48',gamma:'0.04',theta:'-0.12 ($/día)',iv:'28.4% (volatilidad implícita)'}
-  },
-  {id:'IRS-USD',name:'Interest Rate Swap USD',ticker:'IRS-5Y-USD',sector:'Swaps / Tasas',country:'EE.UU.',price:4.85,beta:0.12,sigma:5.8,ret:4.85,rating:'N/A',dividend:0,type:'derivado',delta:0.84,gamma:0.09,theta:-0.24,vega:0.39,impliedVol:14.8,strike:4.61,intrinsic:2.91,
-   profile:'Contrato de Swap de Tasas de Interés (IRS) a 5 años en dólares. Una parte paga una tasa fija del 4.85% y recibe SOFR (tasa flotante). Instrumento utilizado por bancos, corporaciones y fondos para gestionar el riesgo de tasas de interés en sus carteras de deuda.',
-   specs:{type:'Interest Rate Swap (IRS)',maturity:'5 años',payLeg:'Tasa fija 4.85% (anual)',receiveLeg:'SOFR + spread (flotante)',notional:'$1,000,000 (nocional de referencia)',settlement:'Neto trimestral',counterpartyRisk:'Mitigado por CCP (LCH/CME)',market:'OTC / Mercado extrabursátil'}
-  },
-  {id:'CDS-COL',name:'CDS Colombia 5Y',ticker:'CDS-COL-5Y',sector:'Credit Default Swap',country:'Colombia',price:250,beta:0.65,sigma:18.4,ret:6.2,rating:'N/A',dividend:0,type:'derivado',delta:0.72,gamma:0.07,theta:-0.22,vega:0.17,impliedVol:25.4,strike:250.0,intrinsic:150.0,
-   profile:'Credit Default Swap (CDS) soberano de Colombia a 5 años. El comprador paga 250 puntos base anuales y recibe protección ante un evento de crédito (impago soberano). Es el instrumento de referencia para medir el riesgo crediticio soberano de Colombia en los mercados internacionales.',
-   specs:{type:'Credit Default Swap (CDS)',reference:'República de Colombia',maturity:'5 años',spread:'250 puntos base/año',notional:'$10,000,000 (estándar)',trigger:'Impago, reestructuración o moratoria soberana',settlement:'Físico o cash (subasta ISDA)',market:'OTC / ISDA estándar'}
-  },
-  {id:'USD-FWD',name:'Forward USD/COP',ticker:'FWDUSDCOP-3M',sector:'Forwards / Divisas',country:'Colombia',price:4050,beta:0.72,sigma:19.2,ret:6.5,rating:'N/A',dividend:0,type:'derivado',delta:0.66,gamma:0.05,theta:-0.16,vega:0.11,impliedVol:20.2,strike:4293.0,intrinsic:2430.0,
-   profile:'Contrato forward de tipo de cambio USD/COP a 3 meses. Permite fijar hoy el tipo de cambio al que se comprará o venderá un monto de dólares en 3 meses. Ampliamente usado por importadores y exportadores colombianos para cobertura del riesgo cambiario sin necesidad de desembolso inicial.',
-   specs:{type:'Forward cambiario (FX Forward)',currency:'USD/COP',maturity:'90 días (3 meses)',forwardRate:'4,050 COP/USD',spotRate:'3,948 COP/USD',points:'102 puntos forward',notional:'$500,000 USD (estándar mínimo)',settlement:'Entrega física o NDF (non-deliverable)'}
-  },
-  {id:'CLO-UST',name:'CLO Investment Grade',ticker:'CLO-IG-AAA',sector:'Estructurados / CLO',country:'EE.UU.',price:98.2,beta:0.28,sigma:9.4,ret:6.8,rating:'AAA',dividend:0,type:'derivado',delta:0.64,gamma:0.09,theta:-0.24,vega:0.29,impliedVol:18.4,strike:89.36,intrinsic:58.92,
-   profile:'Collateralized Loan Obligation (CLO) de tramo senior con calificación AAA. Instrumento de crédito estructurado que empaqueta una cartera diversificada de préstamos corporativos. El tramo AAA tiene prioridad en el cobro y ofrece protección ante impagos en la cartera subyacente.',
-   specs:{type:'CLO — Tramo Senior AAA',underlying:'Cartera de ~150 préstamos corporativos',tranche:'Senior (AAA)',coupon:'SOFR + 130 bps',maturity:'10 años (período reinversión: 5 años)',collateral:'Préstamos corporativos diversificados',manager:'Gestora institucional especializada',minimumInvestment:'$250,000 USD'}
-  },
-  {id:'FRA-EUR',name:'FRA EUR 3×6',ticker:'FRA-3X6-EUR',sector:'FRA / Tasas',country:'Eurozona',price:3.85,beta:0.08,sigma:4.2,ret:3.85,rating:'N/A',dividend:0,type:'derivado',delta:0.76,gamma:0.03,theta:-0.06,vega:0.11,impliedVol:-4.8,strike:3.62,intrinsic:2.31,
-   profile:'Forward Rate Agreement (FRA) en euros a período 3×6: acuerdo sobre la tasa de interés aplicable al período que comienza en 3 meses y termina en 6 meses. El comprador se protege ante una subida de tasas EURIBOR. Instrumento fundamental en la gestión de riesgo de tasas a corto plazo.',
-   specs:{type:'Forward Rate Agreement (FRA)',currency:'EUR',period:'3×6 (3 meses → 6 meses)',contractRate:'3.85% anual',reference:'EURIBOR 3 meses',notional:'€5,000,000 (estándar)',settlement:'Al inicio del período de referencia (cash)',market:'OTC / interbancario'}
-  },
-  {id:'MSFT-CALL',name:'Opción Call Microsoft',ticker:'MSFT-C',sector:'Opciones',price:12.4,sigma:38.2,ret:11.4,type:'derivado',delta:0.36,gamma:0.07,theta:-0.06,vega:0.31,impliedVol:29.2,strike:11.16,intrinsic:7.44,profile:'Opción Call Microsoft (MSFT-C). Instrumento derivado tipo opciones. Volatilidad anualizada de 38.2%, retorno esperado 11.4%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'TSLA-PUT',name:'Opción Put Tesla',ticker:'TSLA-P',sector:'Opciones',price:18.6,sigma:52.4,ret:9.8,type:'derivado',delta:0.75,gamma:0.06,theta:-0.05,vega:0.3,impliedVol:42.4,strike:17.67,intrinsic:11.16,profile:'Opción Put Tesla (TSLA-P). Instrumento derivado tipo opciones. Volatilidad anualizada de 52.4%, retorno esperado 9.8%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'NVDA-CALL',name:'Opción Call NVIDIA',ticker:'NVDA-C',sector:'Opciones',price:24.8,sigma:48.7,ret:13.2,type:'derivado',delta:0.43,gamma:0.02,theta:-0.13,vega:0.38,impliedVol:46.7,strike:22.57,intrinsic:14.88,profile:'Opción Call NVIDIA (NVDA-C). Instrumento derivado tipo opciones. Volatilidad anualizada de 48.7%, retorno esperado 13.2%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'SPX-PUT',name:'Opción Put S&P 500',ticker:'SPX-P',sector:'Opciones',price:42.5,sigma:28.4,ret:7.4,type:'derivado',delta:0.73,gamma:0.04,theta:-0.23,vega:0.28,impliedVol:36.4,strike:42.08,intrinsic:25.5,profile:'Opción Put S&P 500 (SPX-P). Instrumento derivado tipo opciones. Volatilidad anualizada de 28.4%, retorno esperado 7.4%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'IRS-EUR',name:'Swap Tasa Interés EUR',ticker:'IRS-EUR',sector:'Swaps',price:100.2,sigma:8.4,ret:4.2,type:'derivado',delta:0.5,gamma:0.03,theta:-0.1,vega:0.15,impliedVol:3.4,strike:110.22,intrinsic:60.12,profile:'Swap Tasa Interés EUR (IRS-EUR). Instrumento derivado tipo swaps. Volatilidad anualizada de 8.4%, retorno esperado 4.2%.',specs:{type:'Swaps',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'IRS-GBP',name:'Swap Tasa Interés GBP',ticker:'IRS-GBP',sector:'Swaps',price:99.8,sigma:9.1,ret:4.4,type:'derivado',delta:0.49,gamma:0.04,theta:-0.19,vega:0.24,impliedVol:13.1,strike:106.79,intrinsic:59.88,profile:'Swap Tasa Interés GBP (IRS-GBP). Instrumento derivado tipo swaps. Volatilidad anualizada de 9.1%, retorno esperado 4.4%.',specs:{type:'Swaps',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'CDS-ARG',name:'CDS Argentina',ticker:'CDS-ARG',sector:'Crédito',price:62.4,sigma:42.8,ret:8.6,type:'derivado',delta:0.37,gamma:0.02,theta:-0.17,vega:0.12,impliedVol:44.8,strike:61.15,intrinsic:37.44,profile:'CDS Argentina (CDS-ARG). Instrumento derivado tipo crédito. Volatilidad anualizada de 42.8%, retorno esperado 8.6%.',specs:{type:'Crédito',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'CDS-BRA',name:'CDS Brasil',ticker:'CDS-BRA',sector:'Crédito',price:84.2,sigma:28.4,ret:6.8,type:'derivado',delta:0.44,gamma:0.07,theta:-0.14,vega:0.29,impliedVol:27.4,strike:76.62,intrinsic:50.52,profile:'CDS Brasil (CDS-BRA). Instrumento derivado tipo crédito. Volatilidad anualizada de 28.4%, retorno esperado 6.8%.',specs:{type:'Crédito',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'CDS-TUR',name:'CDS Turquía',ticker:'CDS-TUR',sector:'Crédito',price:58.7,sigma:46.2,ret:9.1,type:'derivado',delta:0.37,gamma:0.06,theta:-0.17,vega:0.32,impliedVol:48.2,strike:56.94,intrinsic:35.22,profile:'CDS Turquía (CDS-TUR). Instrumento derivado tipo crédito. Volatilidad anualizada de 46.2%, retorno esperado 9.1%.',specs:{type:'Crédito',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'FWD-EUR',name:'Forward EUR/USD',ticker:'FWD-EUR',sector:'Forwards',price:1.082,sigma:9.2,ret:2.4,type:'derivado',delta:0.69,gamma:0.02,theta:-0.09,vega:0.24,impliedVol:3.2,strike:1.06,intrinsic:0.65,profile:'Forward EUR/USD (FWD-EUR). Instrumento derivado tipo forwards. Volatilidad anualizada de 9.2%, retorno esperado 2.4%.',specs:{type:'Forwards',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'FWD-JPY',name:'Forward USD/JPY',ticker:'FWD-JPY',sector:'Forwards',price:151.4,sigma:10.4,ret:2.6,type:'derivado',delta:0.37,gamma:0.08,theta:-0.07,vega:0.12,impliedVol:2.4,strike:148.37,intrinsic:90.84,profile:'Forward USD/JPY (FWD-JPY). Instrumento derivado tipo forwards. Volatilidad anualizada de 10.4%, retorno esperado 2.6%.',specs:{type:'Forwards',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'FRA-USD',name:'FRA Dólar 3x6',ticker:'FRA-USD',sector:'Forwards',price:98.4,sigma:6.8,ret:3.4,type:'derivado',delta:0.5,gamma:0.07,theta:-0.1,vega:0.35,impliedVol:1.8,strike:89.54,intrinsic:59.04,profile:'FRA Dólar 3x6 (FRA-USD). Instrumento derivado tipo forwards. Volatilidad anualizada de 6.8%, retorno esperado 3.4%.',specs:{type:'Forwards',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'CLO-EUR',name:'CLO Europeo AAA',ticker:'CLO-EUR',sector:'Estructurados',price:99.1,sigma:12.4,ret:5.2,type:'derivado',delta:0.64,gamma:0.05,theta:-0.24,vega:0.39,impliedVol:21.4,strike:94.14,intrinsic:59.46,profile:'CLO Europeo AAA (CLO-EUR). Instrumento derivado tipo estructurados. Volatilidad anualizada de 12.4%, retorno esperado 5.2%.',specs:{type:'Estructurados',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'MBS-US',name:'MBS Estadounidense',ticker:'MBS-US',sector:'Estructurados',price:97.8,sigma:11.2,ret:4.8,type:'derivado',delta:0.59,gamma:0.06,theta:-0.09,vega:0.24,impliedVol:5.2,strike:92.91,intrinsic:58.68,profile:'MBS Estadounidense (MBS-US). Instrumento derivado tipo estructurados. Volatilidad anualizada de 11.2%, retorno esperado 4.8%.',specs:{type:'Estructurados',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'ABS-AUTO',name:'ABS Préstamos Auto',ticker:'ABS-AUT',sector:'Estructurados',price:98.6,sigma:9.8,ret:4.4,type:'derivado',delta:0.56,gamma:0.03,theta:-0.06,vega:0.11,impliedVol:0.8,strike:92.68,intrinsic:59.16,profile:'ABS Préstamos Auto (ABS-AUT). Instrumento derivado tipo estructurados. Volatilidad anualizada de 9.8%, retorno esperado 4.4%.',specs:{type:'Estructurados',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'VIX-CALL',name:'Opción Call VIX',ticker:'VIX-C',sector:'Opciones',price:8.4,sigma:68.4,ret:6.2,type:'derivado',delta:0.82,gamma:0.03,theta:-0.22,vega:0.37,impliedVol:75.4,strike:8.57,intrinsic:5.04,profile:'Opción Call VIX (VIX-C). Instrumento derivado tipo opciones. Volatilidad anualizada de 68.4%, retorno esperado 6.2%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'GOLD-CALL',name:'Opción Call Oro',ticker:'GOLD-C',sector:'Opciones',price:32.6,sigma:24.8,ret:8.4,type:'derivado',delta:0.8,gamma:0.05,theta:-0.2,vega:0.35,impliedVol:29.8,strike:33.58,intrinsic:19.56,profile:'Opción Call Oro (GOLD-C). Instrumento derivado tipo opciones. Volatilidad anualizada de 24.8%, retorno esperado 8.4%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'OIL-PUT',name:'Opción Put Petróleo',ticker:'OIL-P',sector:'Opciones',price:4.82,sigma:38.4,ret:5.8,type:'derivado',delta:0.4,gamma:0.05,theta:-0.2,vega:0.35,impliedVol:43.4,strike:4.96,intrinsic:2.89,profile:'Opción Put Petróleo (OIL-P). Instrumento derivado tipo opciones. Volatilidad anualizada de 38.4%, retorno esperado 5.8%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'TRS-EQ',name:'Total Return Swap Equity',ticker:'TRS-EQ',sector:'Swaps',price:101.4,sigma:22.4,ret:9.2,type:'derivado',delta:0.73,gamma:0.06,theta:-0.13,vega:0.28,impliedVol:20.4,strike:100.39,intrinsic:60.84,profile:'Total Return Swap Equity (TRS-EQ). Instrumento derivado tipo swaps. Volatilidad anualizada de 22.4%, retorno esperado 9.2%.',specs:{type:'Swaps',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'VARSWAP',name:'Swap de Varianza',ticker:'VAR-SW',sector:'Swaps',price:98.2,sigma:32.8,ret:7.4,type:'derivado',delta:0.61,gamma:0.06,theta:-0.21,vega:0.16,impliedVol:38.8,strike:91.33,intrinsic:58.92,profile:'Swap de Varianza (VAR-SW). Instrumento derivado tipo swaps. Volatilidad anualizada de 32.8%, retorno esperado 7.4%.',specs:{type:'Swaps',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'CAP-USD',name:'Cap Tasa USD',ticker:'CAP-USD',sector:'Opciones',price:2.84,sigma:18.4,ret:4.2,type:'derivado',delta:0.67,gamma:0.08,theta:-0.07,vega:0.32,impliedVol:10.4,strike:2.58,intrinsic:1.7,profile:'Cap Tasa USD (CAP-USD). Instrumento derivado tipo opciones. Volatilidad anualizada de 18.4%, retorno esperado 4.2%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'FLOOR-EUR',name:'Floor Tasa EUR',ticker:'FLR-EUR',sector:'Opciones',price:2.42,sigma:16.8,ret:3.8,type:'derivado',delta:0.69,gamma:0.06,theta:-0.09,vega:0.24,impliedVol:10.8,strike:2.23,intrinsic:1.45,profile:'Floor Tasa EUR (FLR-EUR). Instrumento derivado tipo opciones. Volatilidad anualizada de 16.8%, retorno esperado 3.8%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'BARRIER-SPX',name:'Opción Barrera S&P',ticker:'BAR-SPX',sector:'Opciones',price:18.4,sigma:34.2,ret:8.8,type:'derivado',delta:0.61,gamma:0.02,theta:-0.21,vega:0.36,impliedVol:40.2,strike:19.69,intrinsic:11.04,profile:'Opción Barrera S&P (BAR-SPX). Instrumento derivado tipo opciones. Volatilidad anualizada de 34.2%, retorno esperado 8.8%.',specs:{type:'Opciones',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}},
-  {id:'CONVERT-AAPL',name:'Bono Convertible Apple',ticker:'CONV-AAPL',sector:'Estructurados',price:104.2,sigma:18.6,ret:7.2,type:'derivado',delta:0.83,gamma:0.08,theta:-0.23,vega:0.18,impliedVol:26.6,strike:108.37,intrinsic:62.52,profile:'Bono Convertible Apple (CONV-AAPL). Instrumento derivado tipo estructurados. Volatilidad anualizada de 18.6%, retorno esperado 7.2%.',specs:{type:'Estructurados',underlying:'Diversos',notional:'$100,000',maturity:'3-12 meses',market:'OTC'}}
-];
+const ALL_DERIVATIVES=[];  // Reservado para versión futura (no incluido en la edición de 3 mercados)
 
 // ═══════════════════ STATE ═══════════════════
 const INITIAL_CAPITAL = 50000;                 // capital inicial de mercado (referencia)
@@ -2332,7 +2220,7 @@ function applyCustomHorizon(){ /* deprecated no-op */ }
 let wlFilter='all';
 let wlSort='default';  // SERIE 3: 'default' | 'gainers' | 'losers' | 'name'
 let wlPage=1;          // página actual del watchlist
-const WL_PAGE_SIZE=25; // activos por página (paginación para 150 instrumentos)
+const WL_PAGE_SIZE=25; // activos por página (paginación de instrumentos)
 
 function setWlFilter(type,btn){
   wlFilter=type;
@@ -2363,8 +2251,6 @@ function renderWatchlist(){
     {label:'Acciones',  type:'accion',   data:STOCKS},
     {label:'Bonos',     type:'bono',     data:BONDS},
     {label:'Divisas',   type:'divisa',   data:FOREX},
-    {label:'Futuros',   type:'futuro',   data:FUTURES},
-    {label:'Derivados', type:'derivado', data:DERIVATIVES},
   ];
   const typeColor={accion:'var(--accent)',bono:'var(--green)',divisa:'var(--amber)',futuro:'var(--red)',derivado:'var(--accent2)'};
 
@@ -3653,22 +3539,22 @@ function updateLabCapitalMeter(){
 }
 function suggestAllocation(){
   const p=document.getElementById('lab-perfil').value;
-  // [bonos, acciones, divisas, futuros, derivados]
+  // [bonos, acciones, divisas] — edición de 3 mercados
   const allocs={
-    conservador:[50,25,15,5,5],
-    moderado:   [30,35,15,10,10],
-    agresivo:   [10,55,10,15,10]
+    conservador:[60,25,15],
+    moderado:   [35,45,20],
+    agresivo:   [15,65,20]
   }[p];
-  ['b','a','d','f','dv'].forEach((k,i)=>{
+  ['b','a','d'].forEach((k,i)=>{
     const el=document.getElementById('lab-pct-'+k);
     const vEl=document.getElementById('lab-pct-'+k+'-v');
     if(el)el.value=allocs[i];
     if(vEl)vEl.textContent=allocs[i]+'%';
   });
   document.getElementById('lab-suggestion').innerHTML={
-    conservador:'<b>Conservador:</b> Mayor peso en bonos para preservar capital. Exposición mínima a futuros y derivados.',
-    moderado:   '<b>Moderado:</b> Balance entre acciones, bonos y diversificación en futuros y derivados.',
-    agresivo:   '<b>Agresivo:</b> Dominio de acciones con exposición a futuros para maximizar retorno potencial.'
+    conservador:'<b>Conservador:</b> Mayor peso en bonos para preservar capital, con exposición moderada a divisas.',
+    moderado:   '<b>Moderado:</b> Balance entre acciones y bonos, con diversificación en divisas.',
+    agresivo:   '<b>Agresivo:</b> Dominio de acciones para maximizar el retorno potencial.'
   }[p];
   labAlloc();
 }
@@ -3687,8 +3573,8 @@ function simulateLab(){
   const pb =+document.getElementById('lab-pct-b').value/100;
   const pa =+document.getElementById('lab-pct-a').value/100;
   const pd =+document.getElementById('lab-pct-d').value/100;
-  const pf =+document.getElementById('lab-pct-f').value/100;
-  const pdv=+document.getElementById('lab-pct-dv').value/100;
+  const pf =0;   // Futuros no disponibles en la edición de 3 mercados
+  const pdv=0;   // Derivados no disponibles en la edición de 3 mercados
   const totalPct=Math.round((pb+pa+pd+pf+pdv)*100);
   if(totalPct!==100){notify('La suma de porcentajes debe ser exactamente 100%','error');return;}
 
@@ -3809,7 +3695,7 @@ function simulateLab(){
 
   let varExp='';
   if(achieved>labConfig.target)varExp=`En la mediana de ${N_PATHS.toLocaleString('es-PA')} trayectorias simuladas, tu capital creció <b>${achieved.toFixed(2)}%</b>, superando la meta de <b>${labConfig.target}%</b>. La probabilidad estimada de alcanzar la meta es <b>${probMeta.toFixed(1)}%</b>. Las acciones aportaron <b>${(pa*retA).toFixed(2)}%</b> y los futuros <b>${(pf*retF).toFixed(2)}%</b> al retorno esperado. Sharpe <b>${sh.toFixed(2)}</b>.`;
-  else if(achieved>0)varExp=`En la mediana de ${N_PATHS.toLocaleString('es-PA')} trayectorias, tu capital creció <b>${achieved.toFixed(2)}%</b> sin alcanzar la meta de <b>${labConfig.target}%</b> (probabilidad de meta: <b>${probMeta.toFixed(1)}%</b>). La volatilidad amplificada σ=${sigAmp.toFixed(1)}% reduce la consistencia. Revisa la exposición a futuros y derivados.`;
+  else if(achieved>0)varExp=`En la mediana de ${N_PATHS.toLocaleString('es-PA')} trayectorias, tu capital creció <b>${achieved.toFixed(2)}%</b> sin alcanzar la meta de <b>${labConfig.target}%</b> (probabilidad de meta: <b>${probMeta.toFixed(1)}%</b>). La volatilidad amplificada σ=${sigAmp.toFixed(1)}% reduce la consistencia. Revisa el balance entre acciones, bonos y divisas.`;
   else varExp=`En la mediana de ${N_PATHS.toLocaleString('es-PA')} trayectorias, tu capital registró una pérdida del <b>${Math.abs(achieved).toFixed(2)}%</b>. La probabilidad de terminar con pérdida es <b>${probLoss.toFixed(1)}%</b> y la de ruina (≥95% de pérdida) <b>${probRuin.toFixed(1)}%</b>. Alta volatilidad (σ=${sigAmp.toFixed(1)}%) con shocks adversos erosionan el capital. Reduce exposición a instrumentos especulativos.`;
 
   const pickedNames=labPickedIds.length>0?labPickedIds.map(id=>{const a=allAssets().find(x=>x.id===id);return a?a.ticker:'';}).filter(Boolean).join(', '):'Todos los activos disponibles';
@@ -4172,7 +4058,7 @@ function renderResultsLab(){
                     return`<b>Drawdown registrado — objetivo no alcanzado.</b> El portafolio presentó una pérdida de <b>${h.achieved.toFixed(2)}%</b> respecto al capital inicial de <b>$${fmt(h.init)}</b> en el horizonte de ${h.months} meses.
                     La volatilidad σ de <b>${h.sigma}%</b> con un Sharpe de <b>${h.sharpe}</b> refleja ineficiencia en la relación riesgo-retorno.
                     El VaR estimado de <b>$${fmt(h.var95)}</b> materializó pérdidas durante el período de simulación.
-                    Se recomienda reestructurar la asignación de activos priorizando instrumentos de renta fija y reduciendo la exposición a instrumentos especulativos (futuros, derivados) que amplifican la volatilidad sin generar retorno excedente suficiente.`;
+                    Se recomienda reestructurar la asignación de activos priorizando instrumentos de renta fija y equilibrando la exposición entre acciones, bonos y divisas para mejorar la relación riesgo-retorno.`;
                   }
                 })()}
               </div>
@@ -4230,13 +4116,11 @@ function renderResults(){
   // ── SERIE 7: Synthetic Market Index (CL-30) ──
   const idxEl = document.getElementById('res-market-index');
   if (idxEl) {
-    // Equal-weighted index across all 5 asset classes using session change
+    // Equal-weighted index across the 3 asset classes using session change
     const classes = [
       {label:'Renta Variable', arr:STOCKS,      color:'#2962ff'},
       {label:'Renta Fija',     arr:BONDS,       color:'#00d084'},
       {label:'Divisas',        arr:FOREX,       color:'#ffb400'},
-      {label:'Futuros',        arr:FUTURES,     color:'#ff4757'},
-      {label:'Derivados',      arr:DERIVATIVES, color:'#00c4ff'},
     ];
     let totalChg = 0, count = 0;
     const classChanges = classes.map(c => {
@@ -4254,7 +4138,7 @@ function renderResults(){
       <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap;">
         <div style="font-size:32px;font-family:var(--font-mono);font-weight:700;color:var(--t1);">${indexLevel.toLocaleString('es-PA',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
         <div style="font-size:16px;font-family:var(--font-mono);font-weight:600;color:${indexChg>=0?'var(--green)':'var(--red)'};">${indexChg>=0?'▲ +':'▼ '}${indexChg.toFixed(2)}%</div>
-        <div style="font-size:11px;color:var(--t3);">Base 1,000 pts · Índice equiponderado de 150 activos</div>
+        <div style="font-size:11px;color:var(--t3);">Base 1,000 pts · Índice equiponderado de los activos del mercado</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;">
         ${classChanges.map(c=>`
@@ -6005,7 +5889,7 @@ function generateOpeningNews(){
   // Immediate opening bell item
   const bellItems = [
     {headline:`🔔 Apertura de sesión de mercado N.° ${sessionNum}`,
-     body:`El mercado CapitalLab abre operaciones. Se encuentran disponibles ${allAssets().length} activos en 5 clases: renta variable, renta fija, divisas FX, futuros y derivados OTC. Los precios se actualizan en tiempo real cada 5 segundos.`,
+     body:`El mercado CapitalLab abre operaciones. Se encuentran disponibles ${allAssets().length} activos en 3 clases: renta variable, renta fija y divisas FX. Los precios se actualizan en tiempo real cada 5 segundos.`,
      type:'neutral'},
     {headline:`Análisis pre-apertura: perspectiva de la sesión`,
      body:`Los mercados globales abren con liquidez normal. Los inversores monitorean el comportamiento de los índices de referencia y los spreads soberanos ante el inicio de operaciones de la jornada.`,
