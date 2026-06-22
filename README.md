@@ -1,72 +1,59 @@
 # CapitalLab 📈
 ### Plataforma Interactiva de Gestión y Análisis de Mercados Financieros
 
-> **Edición de 3 Mercados (Servicio Social).** Esta es la documentación de la versión `CapitalLab_3Mercados.html`, que cubre tres clases de activo (Acciones, Bonos y Divisas). Para la versión completa de 5 mercados, consulta `README.md`.
-
 > Simulador web educativo de mercados financieros desarrollado como proyecto de servicio social para la **Facultad de Economía / Licenciatura en Finanzas y Banca** de la **Universidad de Panamá**, 2026.
 
 ---
 
 ## Tabla de Contenidos
 
-- [Descripción](#descripción)
-- [Demo](#demo)
-- [Características Principales](#características-principales)
-- [Mercados y Activos](#mercados-y-activos)
-- [Arquitectura Técnica](#arquitectura-técnica)
-- [Instalación y Uso](#instalación-y-uso)
-- [Publicación en la Web](#publicación-en-la-web)
-- [Estructura del Proyecto](#estructura-del-proyecto)
+- [¿De qué se trata el proyecto?](#de-qué-se-trata-el-proyecto)
+- [Qué puedes hacer en el simulador](#qué-puedes-hacer-en-el-simulador)
+- [Mercados y activos](#mercados-y-activos)
+- [Cómo usar el simulador](#cómo-usar-el-simulador)
+- [Modo Profesor](#modo-profesor)
+- [Cómo instalar y abrir el archivo](#cómo-instalar-y-abrir-el-archivo)
+- [Preguntas frecuentes](#preguntas-frecuentes)
 - [Equipo](#equipo)
-- [Contexto Académico](#contexto-académico)
+- [Contexto académico](#contexto-académico)
 
 ---
 
-## Descripción
+## ¿De qué se trata el proyecto?
 
-**CapitalLab** es un simulador de mercados financieros que funciona completamente en el navegador, sin instalación ni registro. Está diseñado para cerrar la brecha entre la teoría del aula y la operación real de instrumentos financieros, permitiendo a los estudiantes practicar con dinero virtual en un entorno que replica el comportamiento real de los mercados.
+**CapitalLab** es un simulador de mercados financieros que funciona completamente en el navegador. Permite a los estudiantes practicar la compra y venta de instrumentos financieros con **dinero virtual**, en un entorno que imita el comportamiento real de los mercados, sin ningún riesgo económico.
 
-Los estudiantes pueden experimentar rentabilidad, riesgo, pérdidas parciales, costos de transacción reales, apalancamiento con llamadas de margen e incluso **balance negativo**, todo sin riesgo económico real. El docente, por su parte, dispone de un módulo dedicado para recopilar y clasificar el desempeño de sus estudiantes.
+El objetivo es cerrar la brecha entre la teoría del aula y la práctica: en lugar de solo leer sobre rentabilidad, riesgo, diversificación o apalancamiento, el estudiante los **experimenta** gestionando su propia cartera. Puede ganar, perder, equivocarse y aprender de las consecuencias, todo en un espacio seguro.
 
----
+El simulador arranca con un capital virtual de **$50,000** y abre una "sesión de mercado" durante la cual los precios se mueven en tiempo real. El estudiante decide qué comprar, cuándo vender y cómo equilibrar su cartera. Al final puede revisar sus resultados, sus métricas de riesgo y su evolución.
 
-## Demo
-
-> Descarga el archivo `CapitalLab.html` (versión de 5 mercados) o `CapitalLab_3Mercados.html` (versión de 3 mercados para servicio social) y ábrelo directamente en cualquier navegador moderno. No requiere servidor ni conexión a internet para funcionar (las dependencias de interfaz se cargan desde CDN si hay red disponible).
+Esta edición de servicio social se enfoca en **tres mercados** (Acciones, Bonos y Divisas), ideal para una introducción clara a la gestión de carteras sin la complejidad de los instrumentos derivados.
 
 ---
 
-## Características Principales
+## Qué puedes hacer en el simulador
 
 | Funcionalidad | Detalle |
 |---|---|
-| **Sesión tipo NYSE** | Mercado con duración de 4 horas simuladas, botón Abrir/Cerrar |
-| **Precios en tiempo real** | Actualización cada 5 segundos mediante Movimiento Browniano Geométrico (GBM) |
-| **Correlación de mercado** | Modelo CAPM de un factor; co-movimiento realista entre activos |
-| **Costos de transacción** | Comisión de corretaje (0.15%, mínimo $1) más spread bid-ask diferenciado por clase de activo |
-| **Tipos de orden** | Órdenes a mercado, límite de compra, límite de venta/take-profit y stop-loss |
-| **Llamada de margen** | Liquidación forzada automática cuando el patrimonio cae bajo el margen de mantenimiento (25%) |
-| **Ingresos pasivos** | Dividendos y cupones acreditados automáticamente durante la sesión, con devengo proporcional al tiempo |
-| **Noticias causales** | Las noticias generan impactos reales en los precios, absorbidos gradualmente en varios ticks |
-| **VaR de cartera diversificado** | Modelo de un factor que refleja la diversificación (no asume correlación perfecta) |
-| **VaR histórico de sesión** | Cálculo con retornos reales de las velas; respaldo paramétrico cuando faltan datos |
-| **Riesgo expandido** | El balance puede volverse negativo (margen hasta −$25,000); se puede perder todo el capital |
-| **Índice sintético CL-30** | Índice equiponderado de mercado, base 1,000 puntos |
-| **Múltiples carteras** | Hasta 3 estrategias guardadas simultáneamente para comparación |
-| **Modo Profesor** | Recopilación e importación de carteras de estudiantes (con nombre, sección y grupo), tabla de clasificación con filtro por sección y agrupación opcional por grupo, vista de progreso individual y exportación a CSV y PDF |
-| **Análisis por clase de activo** | Navegación por pestañas (Acciones, Bonos, Divisas) con grilla de tarjetas |
-| **Laboratorio Monte Carlo** | El docente asigna capital, horizonte y meta; simulación de miles de trayectorias con distribución de resultados |
-| **Exportación de datos** | Libro de operaciones a CSV (compatible con Excel, con BOM), respaldo en JSON y reporte en PDF |
-| **Compatibilidad móvil** | Diseño responsivo completo; menú hamburguesa; resuelve el bug de `100vh` en iOS Safari |
-| **Buscador y filtros** | Watchlist con búsqueda, ordenamiento por alzas/bajas/alfabético, filtro por tipo y paginación |
-| **Activos personalizados** | Módulo para agregar instrumentos definidos por el usuario |
-| **Persistencia** | Estado guardado en `localStorage`; ningún dato sale del navegador |
+| **Sesión de mercado en vivo** | Sesión de 4 horas simuladas; los precios se actualizan cada 5 segundos |
+| **Comprar y vender** | Operaciones a precio de mercado con costos reales (comisión 0.15% y spread por tipo de activo) |
+| **Órdenes avanzadas** | Órdenes límite de compra, límite de venta / take-profit y stop-loss |
+| **Apalancamiento y margen** | Puedes operar con margen (hasta −$25,000); si el patrimonio cae demasiado, hay liquidación automática (llamada de margen) |
+| **Ingresos pasivos** | Recibes dividendos (acciones) y cupones (bonos) automáticamente durante la sesión |
+| **Centro de noticias** | Noticias por categoría de activo y generales que afectan los precios, al estilo de un portal financiero |
+| **Análisis por activo** | Perfil completo de cada instrumento: estados financieros, indicadores de riesgo, proyección y datos macro |
+| **Mi cartera** | Valoración en vivo, gráficos de evolución y distribución, P&L, y hasta 3 estrategias guardadas para comparar |
+| **Laboratorio** | Ejercicio guiado donde el docente asigna capital, horizonte y meta; incluye simulación Monte Carlo de miles de escenarios |
+| **Resultados** | Evaluación general, tabla por posición, métricas de riesgo (Sharpe, VaR, Beta) e índice de mercado CL-30 |
+| **Exportar** | Tu libro de operaciones a CSV (Excel), un respaldo de tu progreso en JSON, y reportes en PDF |
+| **Funciona en el celular** | Diseño adaptado a pantallas móviles, con menú lateral |
+| **Tu progreso se guarda solo** | El simulador recuerda tu sesión en el propio dispositivo; ningún dato sale del navegador |
 
 ---
 
-## Mercados y Activos
+## Mercados y activos
 
-Esta edición cubre **3 mercados** con 90 activos distribuidos en 30 por categoría:
+Esta edición cubre **3 mercados** con 90 activos (30 por categoría):
 
 | Mercado | Descripción |
 |---|---|
@@ -74,124 +61,106 @@ Esta edición cubre **3 mercados** con 90 activos distribuidos en 30 por categor
 | **Bonos** | Soberanos y corporativos con cupón, rendimiento al vencimiento (YTM), duración y convexidad |
 | **Divisas** | Pares Forex con indicadores macroeconómicos completos (PIB, inflación, tasas de banco central) |
 
-> **Futuros** y **Derivados** están reservados para la versión completa de 5 mercados (`CapitalLab.html`), con 150 activos en total.
+---
+
+## Cómo usar el simulador
+
+Una vez que abres el archivo (ver [Cómo instalar y abrir el archivo](#cómo-instalar-y-abrir-el-archivo)), sigue estos pasos:
+
+1. **Abre el mercado.** En la página *Mercado*, pulsa **"Abrir mercado"**. Comienza la sesión y los precios empiezan a moverse cada 5 segundos.
+
+2. **Elige un activo.** Usa el *Watchlist* (panel lateral izquierdo) para buscar y seleccionar un activo. Puedes filtrar por tipo (Acciones, Bonos, FX) y ordenar por mayores alzas o bajas.
+
+3. **Analiza antes de invertir.** En la página *Análisis* revisa el perfil del activo: su riesgo, rentabilidad esperada, estados financieros (acciones), rendimiento y duración (bonos), datos macro (divisas).
+
+4. **Compra.** En el panel de operación del activo, ingresa la cantidad y pulsa **Comprar**. Verás el costo estimado (incluye comisión y spread). Si quieres, puedes colocar una **orden límite** o un **stop-loss** en vez de comprar al instante.
+
+5. **Gestiona tu cartera.** En *Mi Cartera* ves tus posiciones, su valor en vivo, tu ganancia o pérdida, y gráficos de cómo evoluciona tu patrimonio. Puedes guardar hasta 3 estrategias distintas para compararlas.
+
+6. **Sigue las noticias.** El *Centro de Noticias* muestra eventos que mueven los precios. Reaccionar a tiempo es parte del ejercicio.
+
+7. **Cierra y revisa.** Cuando termines, pulsa **"Cerrar mercado"** y ve a *Resultados* para evaluar tu desempeño: retorno, Sharpe, VaR y posición frente al índice CL-30.
+
+8. **Exporta tu progreso.** Puedes descargar tu libro de operaciones (CSV), un respaldo (JSON) o un reporte (PDF). Si tu profesor usa el Modo Profesor, usa el botón **"Para profesor"** (ver abajo).
+
+> **Consejo:** tu progreso se guarda automáticamente en el navegador. Si cierras y vuelves a abrir el archivo en el mismo dispositivo y navegador, tu sesión seguirá ahí.
 
 ---
 
-## Arquitectura Técnica
+## Modo Profesor
 
-```
-CapitalLab.html   ← archivo único (~6,700 líneas (edición de 3 mercados))
-│
-├── HTML5 semántico
-├── CSS personalizado (variables CSS, tema oscuro)
-│   └── Paleta: #0B0E14 (fondo) + #00C4FF (acento) + #00D084 (verde) + #FF4757 (rojo)
-└── JavaScript puro (sin frameworks)
-    ├── Motor GBM con EFFECTIVE_PERIODS = 1400
-    ├── Correlación CAPM de un factor
-    ├── Eventos de shock (3% de probabilidad por tick, sesgo bajista)
-    ├── Costos de transacción (comisión + spread bid-ask)
-    ├── Órdenes condicionales (límite y stop-loss)
-    ├── Llamada de margen con liquidación forzada
-    ├── Motor de noticias causales (afectan precios)
-    ├── Laboratorio Monte Carlo de N trayectorias
-    ├── Modo Profesor (estado aislado, persistencia separada)
-    └── Persistencia vía localStorage
-```
+CapitalLab incluye un **Modo Profesor** para que el docente evalúe el desempeño de sus estudiantes.
 
-### Constantes clave del motor
+**Para el estudiante:**
+1. Al terminar su sesión, pulsa el botón **"Para profesor"** en la barra superior.
+2. Ingresa su **nombre**, su **sección o materia** (por ejemplo, "Mercado Financiero") y, opcionalmente, su **grupo**.
+3. Se descarga un archivo `.json` que el estudiante entrega al docente.
 
-```javascript
-TICK_MS              = 5000      // actualización de precios cada 5 s
-SESSION_DURATION_MS  = 14400000  // sesión de 4 horas simuladas
-TICKS_PER_YEAR       = 725760    // 2,880 ticks/sesión × 252 sesiones
-EFFECTIVE_PERIODS    = 1400      // volatilidad intradía visible
-RISK_MULTIPLIER      = 3.2       // amplificador de riesgo global
-MARGIN_LIMIT         = -25000    // límite inferior de balance (apalancamiento)
-MAINTENANCE_MARGIN   = 0.25      // margen de mantenimiento para la llamada de margen
-COMMISSION_RATE      = 0.0015    // comisión de corretaje (0.15%)
-```
+**Para el profesor:**
+1. Abre el simulador y entra a la página **Modo Profesor**.
+2. Pulsa **"Importar estudiante(s)"** y selecciona los archivos `.json` de sus estudiantes (puede importar varios a la vez).
+3. Ve una **tabla de clasificación** con el desempeño de cada estudiante, incluyendo su sección y grupo.
+4. Puede **filtrar por sección** para revisar una materia a la vez, y activar **"Agrupar por grupo"** para ver rankings separados por grupo.
+5. Al hacer clic en un estudiante, abre su **progreso detallado**: curva de patrimonio, composición de cartera y libro de operaciones.
+6. Puede **exportar** el ranking completo o el análisis individual a **CSV o PDF** para calificar.
 
-### Dependencias externas (CDN)
-
-| Librería | Versión | Uso |
-|---|---|---|
-| Chart.js | 4.4.1 | Gráficos de velas y distribución |
-| Tabler Icons | Latest | Iconografía de la interfaz |
-| Google Fonts (Syne, DM Sans, DM Mono) | — | Tipografía |
-
-> El simulador es **funcional sin conexión a internet**. Las dependencias solo añaden gráficos e iconos; la lógica financiera opera íntegramente en JavaScript local.
-
-### Secciones del simulador
-
-1. **Mercado** — Gráfico de velas en vivo, métricas del activo, panel de noticias, watchlist, panel de operación con órdenes avanzadas
-2. **Análisis** — Navegación por clase de activo, proyección de precio, riesgo vs rentabilidad, perfil del emisor, indicadores clave
-3. **Personalizado** — Activos definidos por el usuario
-4. **Mi Cartera** — Posiciones, valoración en vivo, gráficos de evolución/distribución/P&L, múltiples estrategias
-5. **Laboratorio** — Módulo guiado con capital y meta asignados por el docente, simulación Monte Carlo
-6. **Resultados** — Evaluación general, tabla por posición, índice CL-30
-7. **Resultados Lab** — Historial de simulaciones del laboratorio
-8. **Modo Profesor** — Recopilación y clasificación de carteras de estudiantes
+> El Modo Profesor es independiente de la sesión del estudiante: importar estudiantes no afecta la cartera ni el progreso propio del docente.
 
 ---
 
-## Instalación y Uso
+## Cómo instalar y abrir el archivo
 
-No se requiere instalación. Pasos:
+CapitalLab es un **único archivo HTML** que se abre directamente en cualquier navegador. **No necesita instalación, ni internet, ni programas adicionales.** Puedes usarlo aunque no tengas acceso al sitio web.
 
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/JustinJones416/Capital-Lab.git
+### Opción 1 — Abrir con doble clic (la más sencilla)
 
-# 2. Abrir el simulador directamente en el navegador
-# (doble clic sobre el archivo, o arrastrar a la pestaña del navegador)
-open CapitalLab.html            # versión completa (5 mercados)
-open CapitalLab_3Mercados.html  # versión servicio social (3 mercados)
-```
+1. Guarda el archivo `CapitalLab_3Mercados.html` en tu computadora (por ejemplo, en el Escritorio o en Descargas).
+2. Haz **doble clic** sobre el archivo.
+3. Se abrirá en tu navegador predeterminado (Chrome, Edge, Firefox o Safari). ¡Listo para usar!
 
-Compatible con Chrome, Firefox, Safari y Edge en versiones actuales. Funcionalidad móvil completa en iOS Safari y Android Chrome.
+### Opción 2 — Abrir desde el navegador
+
+1. Abre tu navegador (Chrome, Firefox, Edge o Safari).
+2. Pulsa `Ctrl + O` (en Windows/Linux) o `Cmd + O` (en Mac).
+3. Busca y selecciona el archivo `CapitalLab_3Mercados.html`.
+4. El simulador se abrirá en una pestaña nueva.
+
+### Opción 3 — Arrastrar al navegador
+
+1. Abre una ventana nueva del navegador.
+2. **Arrastra** el archivo `CapitalLab_3Mercados.html` desde su carpeta hasta la pestaña del navegador y suéltalo.
+
+### En el celular o tablet
+
+1. Guarda el archivo `CapitalLab_3Mercados.html` en el dispositivo (por ejemplo, en la app *Archivos*).
+2. Ábrelo con el navegador (Chrome en Android, Safari en iPhone/iPad). Algunos dispositivos requieren abrirlo desde un gestor de archivos y elegir "Abrir con" → navegador.
+
+> **Importante:** guarda siempre una copia del archivo `CapitalLab_3Mercados.html` en tu computadora o en un respaldo (USB, Google Drive). Mientras tengas el archivo, podrás usar el simulador en cualquier momento, con o sin internet.
 
 ---
 
-## Publicación en la Web
+## Preguntas frecuentes
 
-Al ser un archivo único, CapitalLab puede publicarse en línea sin configuración de servidor. El archivo debe nombrarse `index.html` para que el servicio de alojamiento lo reconozca como página de inicio.
+**¿Necesito conexión a internet?**
+No para la lógica del simulador. La conexión solo mejora la apariencia (tipografías e iconos se cargan de internet); sin red, el simulador funciona igual, solo con un estilo visual más simple. Los gráficos requieren conexión la primera vez.
 
-| Servicio | Método | Costo |
-|---|---|---|
-| **Netlify Drop** | Arrastrar y soltar el archivo en la web de Netlify | Gratis |
-| **GitHub Pages** | Activar Pages sobre el repositorio | Gratis |
-| **Netlify + GitHub** | Vincular el repositorio para despliegue automático en cada cambio | Gratis |
+**¿Se pierde mi progreso si cierro el archivo?**
+No, mientras uses el mismo navegador y dispositivo: el progreso se guarda automáticamente. Si quieres llevarlo a otro dispositivo, usa "Exportar" para descargar un respaldo y luego "Importar".
 
-> El progreso de cada estudiante se guarda en su propio dispositivo (`localStorage`). El intercambio de datos entre el estudiante y el profesor se realiza mediante archivos exportados, sin requerir cuentas ni servidor central.
+**¿Funciona en cualquier navegador?**
+Sí: Chrome, Firefox, Edge y Safari en sus versiones actuales, tanto en computadora como en móvil.
 
----
+**¿Puedo perder dinero real?**
+No. Todo el capital es virtual y con fines educativos.
 
-## Estructura del Proyecto
-
-```
-capitallab/
-│
-├── CapitalLab.html                          # Simulador principal — 5 mercados, 150 activos
-├── CapitalLab_3Mercados.html                # Versión servicio social — 3 mercados, 90 activos
-│
-├── docs/
-│   ├── DOCS.md                                       # Documentación técnica completa
-│   ├── Anteproyecto_CapitalLab_ServicioSocial.docx   # Marco académico del proyecto
-│   └── CapitalLab_Guia_Capacitador.docx              # Guía para docentes y capacitadores
-│
-├── presentations/
-│   ├── CapitalLab_Presentacion.pptx                  # Presentación corporativa — 5 mercados
-│   └── CapitalLab_Presentacion_3Mercados.pptx        # Presentación — 3 mercados
-│
-└── README.md
-```
+**¿Los datos financieros son reales?**
+Son datos representativos con fines educativos, basados en cifras aproximadas de empresas y mercados reales. No deben usarse para decisiones de inversión reales.
 
 ---
 
 ## Equipo
 
-Proyecto desarrollado por estudiantes de la **Licenciatura en Finanzas y Banca**, Universidad de Panamá, como proyecto de servicio social 2026:
+Proyecto desarrollado por estudiantes de la **Licenciatura en Finanzas y Banca**, Universidad de Panamá, como proyecto de servicio social 2026.
 
 | Integrante |
 |---|
