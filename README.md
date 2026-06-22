@@ -1,6 +1,8 @@
 # CapitalLab 📈
 ### Plataforma Interactiva de Gestión y Análisis de Mercados Financieros
 
+> **Edición de 3 Mercados (Servicio Social).** Esta es la documentación de la versión `CapitalLab_3Mercados.html`, que cubre tres clases de activo (Acciones, Bonos y Divisas). Para la versión completa de 5 mercados, consulta `README.md`.
+
 > Simulador web educativo de mercados financieros desarrollado como proyecto de servicio social para la **Facultad de Economía / Licenciatura en Finanzas y Banca** de la **Universidad de Panamá**, 2026.
 
 ---
@@ -51,8 +53,8 @@ Los estudiantes pueden experimentar rentabilidad, riesgo, pérdidas parciales, c
 | **Riesgo expandido** | El balance puede volverse negativo (margen hasta −$25,000); se puede perder todo el capital |
 | **Índice sintético CL-30** | Índice equiponderado de mercado, base 1,000 puntos |
 | **Múltiples carteras** | Hasta 3 estrategias guardadas simultáneamente para comparación |
-| **Modo Profesor** | Recopilación e importación de carteras de estudiantes con tabla de clasificación y exportación a CSV |
-| **Análisis por clase de activo** | Navegación por pestañas (Acciones, Bonos, Divisas, Futuros, Derivados) con grilla de tarjetas |
+| **Modo Profesor** | Recopilación e importación de carteras de estudiantes (con nombre, sección y grupo), tabla de clasificación con filtro por sección y agrupación opcional por grupo, vista de progreso individual y exportación a CSV y PDF |
+| **Análisis por clase de activo** | Navegación por pestañas (Acciones, Bonos, Divisas) con grilla de tarjetas |
 | **Laboratorio Monte Carlo** | El docente asigna capital, horizonte y meta; simulación de miles de trayectorias con distribución de resultados |
 | **Exportación de datos** | Libro de operaciones a CSV (compatible con Excel, con BOM), respaldo en JSON y reporte en PDF |
 | **Compatibilidad móvil** | Diseño responsivo completo; menú hamburguesa; resuelve el bug de `100vh` en iOS Safari |
@@ -64,30 +66,22 @@ Los estudiantes pueden experimentar rentabilidad, riesgo, pérdidas parciales, c
 
 ## Mercados y Activos
 
-El proyecto tiene dos versiones con diferente alcance:
-
-### Versión Principal — 5 Mercados (`CapitalLab.html`)
-
-150 activos distribuidos en 30 por categoría:
+Esta edición cubre **3 mercados** con 90 activos distribuidos en 30 por categoría:
 
 | Mercado | Descripción |
 |---|---|
-| **Acciones** | Renta variable con beta, dividendos y volatilidad |
-| **Bonos** | Soberanos y corporativos con cupón, rendimiento y riesgo país |
-| **Divisas** | Pares Forex con indicadores macro y PIB |
-| **Futuros** | Energía, metales, índices, granos y criptoactivos |
-| **Derivados** | Opciones, swaps, forwards y estructurados OTC |
+| **Acciones** | Renta variable con beta, dividendos, volatilidad y estados financieros (resultados, balance y flujo de efectivo) |
+| **Bonos** | Soberanos y corporativos con cupón, rendimiento al vencimiento (YTM), duración y convexidad |
+| **Divisas** | Pares Forex con indicadores macroeconómicos completos (PIB, inflación, tasas de banco central) |
 
-### Versión Servicio Social — 3 Mercados (`CapitalLab_3Mercados.html`)
-
-90 activos (30 por categoría): **Acciones**, **Bonos** y **Divisas**. Futuros y Derivados reservados para desarrollo futuro.
+> **Futuros** y **Derivados** están reservados para la versión completa de 5 mercados (`CapitalLab.html`), con 150 activos en total.
 
 ---
 
 ## Arquitectura Técnica
 
 ```
-CapitalLab.html   ← archivo único (~5,750 líneas)
+CapitalLab.html   ← archivo único (~6,700 líneas (edición de 3 mercados))
 │
 ├── HTML5 semántico
 ├── CSS personalizado (variables CSS, tema oscuro)
